@@ -27,6 +27,7 @@ services:
           - app-tier
         volumes:
           - ./public/:/app
+          - ./config/php.ini:/opt/bitnami/php/etc/conf.d/custom.ini
         ports:
           - "9000:9000"
     nginx:
