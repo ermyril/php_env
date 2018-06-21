@@ -1,11 +1,11 @@
-PHP-FPM container:
-https://github.com/bitnami/bitnami-docker-php-fpm
-
+PHP-FPM container +
 Nginx container:
-https://github.com/bitnami/bitnami-docker-nginx
+https://github.com/richarvey/nginx-php-fpm/
 
 Mariadb:
 https://github.com/bitnami/bitnami-docker-mariadb
+
+
 -------------
 
 Issues: 
