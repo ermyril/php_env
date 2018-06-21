@@ -18,31 +18,16 @@ services:
         - app-tier
       ports:
         - '3306:3306'
-    phpfpm:
-        tty: true #Enables debugging capabilities when attached to this container.
-        image: 'bitnami/php-fpm:latest'
-        depends_on:
-          - mariadb
-        networks:
-          - app-tier
-        volumes:
-          - ./public/:/app
-          - ./config/php.ini:/opt/bitnami/php/etc/conf.d/custom.ini
-        ports:
-          - "9000:9000"
-    nginx:
-     image: 'bitnami/nginx:latest'
-     depends_on:
-       - phpfpm
-     networks:
-       - app-tier
-     ports:
-       - '80:8080'
-       - '443:8443'
-     volumes:
-       - ./config/vhost.conf:/bitnami/nginx/conf/vhosts/localhost.conf
-
-
-
-
-
+    nginx-php-fpm:
+      image: richarvey/nginx-php-fpm:latest
+      restart: always
+      depends_on:
+        - mariadb
+      networks:
+        - app-tier
+      volumes:
+        - ./public/:/var/www/html
+        - ./config/php.ini:/usr/local/etc/php/conf.d/docker-vars.ini
+        - ./config/php-fpm.conf:/usr/local/etc/php-fpm.d/php-fpm.conf
+      ports:
+          - '80:80'
