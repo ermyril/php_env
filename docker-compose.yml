@@ -26,13 +26,8 @@ services:
       networks:
         - app-tier
       volumes:
-          # - ./public/:/var/www/html
-        - test-native-osx-sync:/var/www/html:nocopy
+        - ./public/:/var/www/html
         - ./config/php.ini:/usr/local/etc/php/conf.d/docker-vars.ini
         - ./config/php-fpm.conf:/usr/local/etc/php-fpm.d/php-fpm.conf
       ports:
           - '80:80'
-
-volumes:
-  test-native-osx-sync:
-    external: true
