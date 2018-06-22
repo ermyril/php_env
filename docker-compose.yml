@@ -29,5 +29,6 @@ services:
         - ./public/:/var/www/html
         - ./config/php.ini:/usr/local/etc/php/conf.d/docker-vars.ini
         - ./config/php-fpm.conf:/usr/local/etc/php-fpm.d/php-fpm.conf
+        - ./config/nginx.conf:/etc/nginx/sites-available/default.conf
       ports:
           - '80:80'
