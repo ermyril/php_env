@@ -6,8 +6,8 @@ networks:
 services:
     nginx-php-fpm:
       volumes:
-        - test-native-osx-sync:/var/www/html:nocopy
+        - name-native-osx-sync:/var/www/html:nocopy
 
 volumes:
-  test-native-osx-sync:
+  name-native-osx-sync:
     external: true
