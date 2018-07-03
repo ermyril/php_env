@@ -1,7 +1,4 @@
 version: '2'
-networks:
-  app-tier:
-    driver: bridge
 
 services:
     mariadb:
@@ -16,6 +13,8 @@ services:
           - MARIADB_PASSWORD=my_password
       networks:
         - app-tier
+      volumes:
+        - db-data:/bitnami
       ports:
         - '3306:3306'
     nginx-php-fpm:
@@ -32,3 +31,12 @@ services:
         - ./config/nginx.conf:/etc/nginx/sites-available/default.conf
       ports:
           - '80:80'
+
+
+networks:
+  app-tier:
+    driver: bridge
+
+volumes:
+    db-data:
+
